@@ -57,8 +57,17 @@ function Employee(name, email, hireDate) {
     The move property will be added to every object that is being returned from the Car function.
     You'll also need to use the 'this' keyword properly in order to make sure you're
       invoking moveCar on the right object (prius vs mustang).
-  */
-  
+      */
+     function Car(make, model, year){
+       this.make = make;
+       this.model = model;
+       this.year = year;
+       this.move = 0;
+       this.moveCar = function(){
+         return this.move += 10;
+         
+       }
+      }
   // Code here
   // function 
   ////////// PROBLEM 4 //////////
@@ -79,28 +88,41 @@ function Employee(name, email, hireDate) {
   }
   
   // Code here
-  // Movie.prototype.changeRating = function(num) {
-  //   this.rating = num * 2 / 2;
-
-  // }
+  Movie.prototype.changeRating = function(num) {
+    this.rating = (this.rating + num) / 2;
+    return this.rating;
+  }
   ////////// PROBLEM 5 //////////
   
   // Write a constructor function called User. This function should take in 4 parameters called name, age, email, and savedPosts in that order. Name and email will be strings, age will be a number and savedPosts will be an array of objects. These objects will each have 3 properties: id (a number), title (a string), and rating (a number between 1 and 5). These objects are the posts that the user will have saved to their account.
   
   // Once the User constructor function is created, write a prototype method for the User function. Name this method addSavedPost. It should take in three parameters: id (a number), title (a string) and rating (a number). Use these parameters to create a new object and add it to the savedPosts array. Make sure to name the properties the same as described previously (id, title, rating).
-  
+  const post = {
+    id: 1,
+    title: 'hello',
+    rating: 3,
+  }
+  const post2 = {
+    id: 2,
+    title: 'hello',
+    rating: 3,
+  }
   // Code here
-  // function User(name, age, email, savedPosts) {
-  //   this.name = name;
-  //   this.age = age;
-  //   this.email = email;
-  //   this.savedPosts = savedPosts;
-  // }
-  // User.prototype.addSavedPost = function(id, title, rating){
-  //   this.id = id;
-  //   this.title = title;
-  //   this.rating = rating;
-  // }
+  function User(name, age, email, savedPosts) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+    this.savedPosts = savedPosts;
+  }
+  User.prototype.addSavedPost = function(id, title, rating){
+    const post3 = {
+      id,
+      title,
+      rating,
+    }
+    this.savedPosts.push(post3);
+  }
+  const logan = User("Logan", 30, 'email', [post, post2])
   ////////// PROBLEM 6 //////////
   
   // You will be using the constructor function you just created in problem 5.
